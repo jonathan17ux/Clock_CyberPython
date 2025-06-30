@@ -8,21 +8,29 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # === Setup ===
 root = tk.Tk()
-root.title("Cyber Clock")
-root.geometry("480x320")
-root.resizable(False, False)
+root.attributes('-fullscreen', True)         # Fullscreen mode
+root.config(cursor="none")                   # Hide mouse cursor
+
+# Allow exit with ESC key (optional, for dev mode)
+
+
+def close(event=None):
+    root.destroy()
+
+
+root.bind("<Escape>", close)
 
 # === Load Background ===
 bg_image = Image.open(os.path.join(script_dir, "background_clock.png"))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
-canvas = tk.Canvas(root, width=480, height=320, highlightthickness=0)
-canvas.pack()
+canvas = tk.Canvas(root, highlightthickness=0)
+canvas.pack(fill="both", expand=True)
 canvas.create_image(0, 0, anchor=tk.NW, image=bg_photo)
 
 # === Time / Date Text ===
 time_text = canvas.create_text(
-    325, 130, fill="#f4bf18", font=("Impact", 100), anchor="e")
+    325, 130, fill="#f4bf18", font=("Impact", 128), anchor="e")
 p_text = canvas.create_text(
     390, 145, fill="#f4bf18", font=("Impact", 50))
 date_text = canvas.create_text(
@@ -61,7 +69,7 @@ except EOFError:
     pass
 
 gif_index = 0
-pause_between_loops = 30000  # in milliseconds (1 second delay after full loop)
+pause_between_loops = 30000  # Delay after full loop (30 seconds)
 gif_item = canvas.create_image(440, 170, anchor=tk.NE, image=frames[0])
 
 
@@ -69,11 +77,11 @@ def update_gif():
     global gif_index
     canvas.itemconfig(gif_item, image=frames[gif_index])
     if gif_index < len(frames) - 1:
-        # Normal animation frame
+
         gif_index += 1
-        root.after(100, update_gif)  # 100ms per frame
+        root.after(100, update_gif)
     else:
-        # Last frame — reset and pause before next loop
+
         gif_index = 0
         root.after(pause_between_loops, update_gif)
 
