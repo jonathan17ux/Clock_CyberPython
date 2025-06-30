@@ -22,9 +22,9 @@ canvas.create_image(0, 0, anchor=tk.NW, image=bg_photo)
 
 # === Time / Date Text ===
 time_text = canvas.create_text(
-    325, 130, fill="#f4bf18", font=("Impact", 128, "bold"), anchor="e")
+    325, 130, fill="#f4bf18", font=("Impact", 128), anchor="e")
 p_text = canvas.create_text(
-    390, 145, fill="#f4bf18", font=("Impact", 50, "bold"))
+    390, 145, fill="#f4bf18", font=("Impact", 50))
 date_text = canvas.create_text(
     325, 220, fill="lightblue", font=("Impact", 40), anchor="e")
 day_text = canvas.create_text(
