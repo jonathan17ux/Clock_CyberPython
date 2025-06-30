@@ -30,11 +30,11 @@ canvas.create_image(0, 0, anchor=tk.NW, image=bg_photo)
 
 # === Time / Date Text ===
 time_text = canvas.create_text(
-    325, 130, fill="#f4bf18", font=("Impact", 100), anchor="e")
+    325, 130, fill="#f4bf18", font=("Impact", 105), anchor="e")
 p_text = canvas.create_text(
-    390, 145, fill="#f4bf18", font=("Impact", 50))
+    390, 145, fill="#f4bf18", font=("Impact", 45))
 date_text = canvas.create_text(
-    325, 220, fill="lightblue", font=("Impact", 40), anchor="e")
+    325, 220, fill="lightblue", font=("Impact", 35), anchor="e")
 day_text = canvas.create_text(
     325, 255, fill="lightblue", font=("Impact", 25), anchor="e")
 
