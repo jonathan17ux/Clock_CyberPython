@@ -1,6 +1,10 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import datetime
+import os
+
+# Set the working directory to the script location
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # === Setup ===
 root = tk.Tk()
@@ -9,7 +13,7 @@ root.geometry("480x320")
 root.resizable(False, False)
 
 # === Load Background ===
-bg_image = Image.open("background_clock.png")
+bg_image = Image.open(os.path.join(script_dir, "background_clock.png"))
 bg_photo = ImageTk.PhotoImage(bg_image)
 
 canvas = tk.Canvas(root, width=480, height=320, highlightthickness=0)
@@ -44,13 +48,8 @@ def update_clock():
 
 update_clock()
 
-# # === Gift Icon ===
-# gift_image = Image.open("cat.gif").resize((80, 80))
-# gift_photo = ImageTk.PhotoImage(gift_image)
-# canvas.create_image(435, 180, anchor=tk.NE, image=gift_photo)
-
 # === Load and Animate Gift GIF ===
-gif = Image.open("cat.gif")
+gif = Image.open(os.path.join(script_dir, "cat.gif"))
 frames = []
 
 try:
